@@ -7,6 +7,7 @@ const colors = [
   "#795548",
 ];
 
+const NOTIFICATION_DELAY = 1000;
 let timeoutId = null;
 
 const refs = {
@@ -25,7 +26,7 @@ function randomColorFromBody(e) {
       document.body.style.backgroundColor =
         colors[randomIntegerFromInterval(0, 5)];
       e.target.disabled = true;
-    }, 1000);
+    }, NOTIFICATION_DELAY);
     e.target.disabled = false;
   } else {
     clearInterval(timeoutId);
