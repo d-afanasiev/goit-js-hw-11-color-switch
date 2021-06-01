@@ -7,9 +7,10 @@ const colors = [
   "#795548",
 ];
 
+let addBgColorId = null;
+
 const refs = {
   containerForButton: document.querySelector(".js-button"),
-  addBgColorId: 0,
 };
 
 const randomIntegerFromInterval = (min, max) => {
@@ -20,14 +21,14 @@ refs.containerForButton.addEventListener("click", randomColorFromBody);
 
 function randomColorFromBody(e) {
   if (e.target.dataset.action === "start") {
-    refs.addBgColorId = setInterval(() => {
+    addBgColorId = setInterval(() => {
       document.body.style.backgroundColor =
         colors[randomIntegerFromInterval(0, 5)];
       e.target.disabled = true;
     }, 1000);
     e.target.disabled = false;
   } else {
-    clearInterval(refs.addBgColorId);
+    clearInterval(addBgColorId);
     e.currentTarget.firstElementChild.disabled = false;
   }
 }
